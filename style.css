@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #0b1220;
+  --card: #111a2e;
+  --card2: #0f1a33;
+  --text: #eaf0ff;
+  --muted: #9fb0d0;
+  --primary: #4f8cff;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --border: rgba(255,255,255,0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #121c35, var(--bg));
+  color: var(--text);
+}
+
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-box {
+  width: 380px;
+  background: var(--card);
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card2);
+  color: var(--text);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sidebar {
+  position: fixed;
+  width: 260px;
+  height: 100vh;
+  background: var(--card);
+  padding: 20px;
+  border-right: 1px solid var(--border);
+}
+
+.sidebar a {
+  display: block;
+  padding: 12px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.main {
+  margin-left: 260px;
+  padding: 24px;
+}
+
+.card {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+
+.balance {
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.small-btn {
+  padding: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}

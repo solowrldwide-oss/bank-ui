@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="check()">
+
+<div class="sidebar">
+  <a href="dashboard.html">Dashboard</a>
+  <a href="transfer.html">Transfer</a>
+  <a href="transactions.html">Transactions</a>
+</div>
+
+<div class="main">
+
+  <div class="card">
+    <h2>Hi there, Thane!</h2>
+    <p class="balance" id="bal">$250,000,000.00</p>
+
+    <div class="row">
+      <button class="small-btn" onclick="toggle()">Hide/Show</button>
+      <button class="small-btn" onclick="copyAcc()">Copy Acc</button>
+    </div>
+
+    <p id="acc">7963064085</p>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
