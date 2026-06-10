@@ -1,33 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body onload="check()">
 
-<div class="sidebar">
-  <a href="dashboard.html">Dashboard</a>
-  <a href="transfer.html">Transfer</a>
-  <a href="transactions.html">Transactions</a>
-</div>
+<body onload="checkAuth()">
 
-<div class="main">
+<div class="layout">
 
-  <div class="card">
-    <h2>Hi there, Thane!</h2>
-    <p class="balance" id="bal">$250,000,000.00</p>
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2 style="font-size:20px; margin-bottom:20px;">NeoBank</h2>
 
-    <div class="row">
-      <button class="small-btn" onclick="toggle()">Hide/Show</button>
-      <button class="small-btn" onclick="copyAcc()">Copy Acc</button>
+    <a href="dashboard.html">🏠 Home</a>
+    <a href="transfer.html">💸 Transfer</a>
+    <a href="transactions.html">📊 History</a>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- HERO BALANCE -->
+    <div class="card">
+
+      <p class="muted">Available Balance</p>
+
+      <h1 class="balance" id="balance">$250,000,000.00</h1>
+
+      <p class="muted">Account: 7963064085</p>
+
+      <div style="display:flex; gap:10px; margin-top:15px;">
+        <button onclick="toggleBalance()">Hide/Show</button>
+        <button onclick="copyAcc()">Copy Account</button>
+      </div>
+
     </div>
 
-    <p id="acc">7963064085</p>
+    <!-- QUICK ACTIONS -->
+    <div class="grid">
+
+      <div class="card" onclick="go('transfer.html')" style="cursor:pointer;">
+        <h3>💸 Send Money</h3>
+        <p class="muted">Transfer funds instantly</p>
+      </div>
+
+      <div class="card" onclick="go('transactions.html')" style="cursor:pointer;">
+        <h3>📊 Activity</h3>
+        <p class="muted">View transactions</p>
+      </div>
+
+      <div class="card">
+        <h3>💳 Cards</h3>
+        <p class="muted">Manage your cards</p>
+      </div>
+
+    </div>
+
   </div>
 
 </div>
 
+<script>
+function checkAuth() {
+  if (sessionStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "index.html";
+  }
+}
+
+let hidden = false;
+
+function toggleBalance() {
+  const bal = document.getElementById("balance");
+
+  hidden = !hidden;
+
+  bal.innerText = hidden ? "******" : "$250,000,000.00";
+}
+
+function copyAcc() {
+  navigator.clipboard.writeText("7963064085");
+  alert("Account copied");
+}
+
+function go(page) {
+  window.location.href = page;
+}
+</script>
 <script src="script.js"></script>
 </body>
 </html>

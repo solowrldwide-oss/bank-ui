@@ -1,28 +1,70 @@
-function check() {
-  if(sessionStorage.getItem("loggedIn") !== "true") {
+// =========================
+// AUTH GUARD
+// =========================
+function checkAuth() {
+  if (sessionStorage.getItem("loggedIn") !== "true") {
     window.location.href = "index.html";
   }
 }
 
-function toggle() {
-  const bal = document.getElementById("bal");
-  bal.innerText = bal.innerText === "******" ? "$250,000,000.00" : "******";
+// =========================
+// NAVIGATION
+// =========================
+function go(page) {
+  window.location.href = page;
 }
 
+// =========================
+// LOGOUT (optional future use)
+// =========================
+function logout() {
+  sessionStorage.removeItem("loggedIn");
+  window.location.href = "index.html";
+}
+
+// =========================
+// BALANCE TOGGLE (DASHBOARD)
+// =========================
+let hidden = false;
+
+function toggleBalance() {
+  const bal = document.getElementById("balance");
+
+  if (!bal) return;
+
+  hidden = !hidden;
+
+  bal.innerText = hidden ? "******" : "$250,000,000.00";
+}
+
+// =========================
+// COPY ACCOUNT NUMBER
+// =========================
 function copyAcc() {
-  const acc = document.getElementById("acc").innerText;
-  navigator.clipboard.writeText(acc);
+  const accText = "7963064085";
+
+  navigator.clipboard.writeText(accText);
+
+  alert("Account number copied ✔");
 }
 
-function send() {
-  const acc = document.getElementById("acc").value;
-  const amount = document.getElementById("amount").value;
+// =========================
+// TRANSFER SIMULATION (optional hook if reused later)
+// =========================
+function simulateTransfer(acc, amount, statusEl, callback) {
+  if (!acc || !amount) {
+    statusEl.innerText = "Fill all fields first";
+    return;
+  }
 
-  document.getElementById("status").innerText = "Processing...";
+  statusEl.innerText = "Verifying account...";
 
   setTimeout(() => {
-    document.getElementById("receipt").style.display = "block";
-    document.getElementById("receipt").innerText =
-      "Sent $" + amount + " to " + acc;
+    statusEl.innerText = "Account verified ✔ Processing...";
+
+    setTimeout(() => {
+      callback();
+    }, 1500);
+
   }, 1500);
 }

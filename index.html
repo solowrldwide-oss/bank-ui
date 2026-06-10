@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login</title>
+  <meta charset="UTF-8">
+  <title>NeoBank Login</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="auth-container">
-  <div class="auth-box">
+<div class="auth">
+  <div class="auth-box card">
 
-    <h2>Login</h2>
+    <h1 style="font-size:28px; font-weight:800;">Welcome back</h1>
+    <p class="muted">Sign in to access your account</p>
 
-    <input id="email" placeholder="Email">
+    <input id="email" type="email" placeholder="Email">
     <input id="password" type="password" placeholder="Password">
 
     <button onclick="login()">Login</button>
 
-    <p id="err"></p>
+    <p id="error" style="margin-top:12px; color:#ef4444;"></p>
 
   </div>
 </div>
@@ -24,16 +27,19 @@
 <script>
 function login() {
   const email = document.getElementById("email").value;
-  const pass = document.getElementById("password").value;
+  const password = document.getElementById("password").value;
 
-  if(email === "theethanerivers@gmail.com" && pass === "Incredibleman") {
-    sessionStorage.setItem("loggedIn","true");
+  const validEmail = "theethanerivers@gmail.com";
+  const validPass = "Incredibleman";
+
+  if (email === validEmail && password === validPass) {
+    sessionStorage.setItem("loggedIn", "true");
     window.location.href = "dashboard.html";
   } else {
-    document.getElementById("err").innerText = "Wrong login";
+    document.getElementById("error").innerText = "Invalid login details";
   }
 }
 </script>
-
+<script src="script.js"></script>
 </body>
 </html>

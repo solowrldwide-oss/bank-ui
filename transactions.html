@@ -1,29 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Transactions</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body onload="check()">
 
-<div class="sidebar">
-  <a href="dashboard.html">Dashboard</a>
-  <a href="transfer.html">Transfer</a>
-</div>
+<body onload="checkAuth()">
 
-<div class="main">
+<div class="layout">
 
-  <div class="card">
-    <h2>Transactions</h2>
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>NeoBank</h2>
 
-    <p>+ Salary</p>
-    <p>- Transfer</p>
-    <p>+ Bonus</p>
+    <a href="dashboard.html">🏠 Home</a>
+    <a href="transfer.html">💸 Transfer</a>
+    <a href="transactions.html">📊 History</a>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="card">
+      <h2>Transaction History 📊</h2>
+      <p class="muted">Your recent activity</p>
+    </div>
+
+    <!-- TRANSACTION LIST -->
+    <div class="card">
+
+      <div style="margin-bottom:15px;">
+        <h3 style="color:#22c55e;">+ $5,000,000</h3>
+        <p class="muted">Salary Deposit • Today</p>
+      </div>
+
+      <div style="margin-bottom:15px;">
+        <h3 style="color:#ef4444;">- $250,000</h3>
+        <p class="muted">Transfer • Yesterday</p>
+      </div>
+
+      <div style="margin-bottom:15px;">
+        <h3 style="color:#22c55e;">+ $1,200,000</h3>
+        <p class="muted">Investment Return • 2 days ago</p>
+      </div>
+
+      <div style="margin-bottom:15px;">
+        <h3 style="color:#ef4444;">- $45,000</h3>
+        <p class="muted">Online Purchase • 3 days ago</p>
+      </div>
+
+      <div>
+        <h3 style="color:#22c55e;">+ $3,500,000</h3>
+        <p class="muted">Bonus Payment • Last week</p>
+      </div>
+
+    </div>
 
   </div>
 
 </div>
 
+<script>
+function checkAuth() {
+  if (sessionStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "index.html";
+  }
+}
+</script>
 <script src="script.js"></script>
 </body>
 </html>
