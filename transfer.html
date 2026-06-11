@@ -1,45 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#00c27a">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
+
+<body onload="check()">
+
+<div class="main">
+
+  <div class="card">
+    <h2>Transfer Money</h2>
+
+    <input id="acc" placeholder="Account Number" oninput="lookup()">
+    <input id="amount" placeholder="Amount">
+
+    <p id="name" class="muted"></p>
+
+    <button onclick="send()">Send</button>
+
+    <p id="status" class="muted"></p>
+  </div>
+
+  <div class="card" id="receipt" style="display:none;"></div>
+
+</div>
+
 <div class="bottom-nav">
   <a href="dashboard.html">🏠</a>
   <a href="transfer.html">💸</a>
   <a href="transactions.html">📊</a>
-</div>
-<body onload="check()">
-
-<div class="layout">
-
-  <div class="sidebar">
-    <a href="dashboard.html">Home</a>
-    <a href="transfer.html">Transfer</a>
-    <a href="transactions.html">History</a>
-  </div>
-
-  <div class="main">
-
-    <div class="card">
-      <h2>Transfer Money</h2>
-
-      <input id="acc" placeholder="Account Number" oninput="lookup()">
-      <input id="amount" placeholder="Amount">
-
-      <p id="name"></p>
-
-      <button onclick="send()">Send</button>
-
-      <p id="status"></p>
-    </div>
-
-    <div class="card" id="receipt" style="display:none;"></div>
-
-  </div>
-
 </div>
 
 <script src="script.js"></script>

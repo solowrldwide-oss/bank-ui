@@ -7,7 +7,6 @@
   --text: #eaf5ee;
   --muted: #9fb2a6;
   --primary: #00c27a;
-  --danger: #ff4d4d;
 }
 
 * {
@@ -22,59 +21,39 @@ html, body {
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-}
-
-body {
   background: radial-gradient(circle at top, #0a1a14, var(--bg));
   color: var(--text);
 }
 
-/* LAYOUT */
-.layout {
-  display: flex;
-  min-height: 100vh;
-}
-
-.sidebar {
-  width: 240px;
-  position: fixed;
-  height: 100vh;
-  padding: 20px;
-}
-
-.sidebar a {
-  display: none;
-  padding: 12px;
-  color: var(--muted);
-  text-decoration: none;
-}
-
+/* APP LAYOUT */
 .main {
-  margin-left: 0;
-  padding: 18px;
-  padding-bottom: 90px; /* prevents content hiding behind bottom nav */
-  width: 100%;
+  padding: 16px;
+  padding-bottom: 90px;
 }
 
-/* CARD */
+/* CARDS */
 .card {
   background: var(--card);
   border: 1px solid var(--stroke);
-  border-radius: 18px;
+  border-radius: 22px;
   padding: 18px;
-  backdrop-filter: blur(16px);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  backdrop-filter: blur(18px);
 }
 
-/* BUTTON */
-button {
-  background: var(--primary);
-  border: none;
-  padding: 14px;
-  border-radius: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  width: 100%;
+/* TEXT */
+h1, h2 {
+  font-weight: 800;
+}
+
+.balance {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.muted {
+  color: var(--muted);
 }
 
 /* INPUT */
@@ -82,54 +61,54 @@ input {
   width: 100%;
   padding: 14px;
   margin-top: 10px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid var(--stroke);
   background: rgba(0,0,0,0.3);
   color: white;
 }
 
-/* TEXT */
-.balance {
-  font-size: 40px;
-  font-weight: 800;
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: var(--primary);
+  font-weight: 700;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
-.muted {
-  color: var(--muted);
-}
+/* BOTTOM NAV */
 .bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-
-  height: 60px;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(12px);
+  height: 70px;
 
   display: flex;
   justify-content: space-around;
   align-items: center;
 
+  background: rgba(10, 15, 25, 0.9);
+  backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 .bottom-nav a {
   color: #9fb2a6;
-  font-size: 20px;
+  font-size: 22px;
   text-decoration: none;
 }
 
 .bottom-nav a:hover {
   color: #00c27a;
 }
-button {
-  background: #00c27a;
-}
 
-/* 👇 THIS IS THE PART YOU ADD AT THE BOTTOM */
+/* ANIMATION FEEL */
 .card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .card:active {

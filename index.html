@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#00c27a">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
-<div class="bottom-nav">
-  <a href="dashboard.html">🏠</a>
-  <a href="transfer.html">💸</a>
-  <a href="transactions.html">📊</a>
-</div>
+
 <body>
 
-<div class="layout" style="justify-content:center;align-items:center;">
+<div class="main" style="display:flex;justify-content:center;align-items:center;height:100vh;">
 
-  <div class="card" style="width:320px;">
-    <h2>Login</h2>
+  <div class="card" style="width:100%;max-width:340px;">
+    <h2>Welcome Back</h2>
 
     <input id="email" placeholder="Email">
     <input id="password" type="password" placeholder="Password">
 
     <button onclick="login()">Login</button>
 
-    <p id="err"></p>
+    <p id="err" class="muted"></p>
   </div>
 
 </div>

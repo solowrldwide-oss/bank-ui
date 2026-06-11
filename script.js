@@ -12,7 +12,7 @@ function login() {
     sessionStorage.setItem("loggedIn", "true");
     window.location.href = "dashboard.html";
   } else {
-    document.getElementById("err").innerText = "Wrong login";
+    document.getElementById("err").innerText = "Wrong login details";
   }
 }
 
@@ -37,7 +37,7 @@ function lookup() {
   const name = users[acc];
 
   document.getElementById("name").innerText =
-    name ? "Recipient: " + name : "Not found";
+    name ? "Recipient: " + name : "Checking...";
 }
 
 function send() {
