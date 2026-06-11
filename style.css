@@ -1,66 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --bg1: #070b18;
-  --bg2: #0b1630;
+  --bg: #05080f;
   --card: rgba(255,255,255,0.06);
-  --stroke: rgba(255,255,255,0.10);
-  --text: #eaf2ff;
-  --muted: #9fb3d1;
-  --blue: #4f8cff;
-  --green: #22c55e;
-  --red: #ef4444;
+  --stroke: rgba(255,255,255,0.08);
+  --text: #eaf5ee;
+  --muted: #9fb2a6;
+  --primary: #00c27a;
+  --danger: #ff4d4d;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
-  background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+  background: radial-gradient(circle at top, #0a1a14, var(--bg));
   color: var(--text);
 }
 
-/* GLASS CARD */
+/* LAYOUT */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  position: fixed;
+  height: 100vh;
+  padding: 20px;
+}
+
+.sidebar a {
+  display: none;
+  padding: 12px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.main {
+  margin-left: 0;
+  padding: 18px;
+  padding-bottom: 90px; /* prevents content hiding behind bottom nav */
+  width: 100%;
+}
+
+/* CARD */
 .card {
   background: var(--card);
   border: 1px solid var(--stroke);
   border-radius: 18px;
-  padding: 20px;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  padding: 18px;
+  backdrop-filter: blur(16px);
+  margin-bottom: 16px;
 }
 
-/* BUTTONS */
+/* BUTTON */
 button {
-  background: var(--blue);
+  background: var(--primary);
   border: none;
-  padding: 12px 16px;
+  padding: 14px;
   border-radius: 12px;
-  color: white;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: 0.2s;
-}
-
-button:hover {
-  transform: translateY(-2px);
-}
-
-/* LOGIN */
-.auth {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.auth-box {
-  width: 380px;
-  text-align: center;
+  width: 100%;
 }
 
 /* INPUT */
@@ -70,76 +84,54 @@ input {
   margin-top: 10px;
   border-radius: 12px;
   border: 1px solid var(--stroke);
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.3);
   color: white;
 }
 
-/* DASHBOARD LAYOUT */
-.layout {
-  min-height: 100vh;
-  display: flex;
-}
-
-/* SIDEBAR */
-.sidebar {
-  width: 240px;
-  height: 100vh;
-  padding: 20px;
-  position: fixed;
-}
-
-.sidebar a {
-  display: block;
-  padding: 12px;
-  margin: 6px 0;
-  color: var(--muted);
-  text-decoration: none;
-  border-radius: 10px;
-}
-
-.sidebar a:hover {
-  background: rgba(255,255,255,0.06);
-  color: white;
-}
-
-/* MAIN */
-.main {
-  margin-left: 240px;
-  padding: 24px;
-  min-height: 100vh;
-  width: 100%;
-}
-
-/* HERO BALANCE */
+/* TEXT */
 .balance {
-  font-size: 42px;
+  font-size: 40px;
   font-weight: 800;
-  letter-spacing: -1px;
 }
 
-/* GRID ACTIONS */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
-  margin-top: 20px;
-}
-
-/* SMALL TEXT */
 .muted {
   color: var(--muted);
 }
-html, body {
-  height: 100%;
-  width: 100%;
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 60px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
-body {
-  min-height: 100vh;
-  margin: 0;
-  body {
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
+.bottom-nav a {
+  color: #9fb2a6;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.bottom-nav a:hover {
+  color: #00c27a;
+}
+button {
+  background: #00c27a;
+}
+
+/* 👇 THIS IS THE PART YOU ADD AT THE BOTTOM */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:active {
+  transform: scale(0.98);
 }

@@ -1,70 +1,54 @@
-// =========================
-// AUTH GUARD
-// =========================
-function checkAuth() {
+function check() {
   if (sessionStorage.getItem("loggedIn") !== "true") {
     window.location.href = "index.html";
   }
 }
 
-// =========================
-// NAVIGATION
-// =========================
-function go(page) {
-  window.location.href = page;
-}
+function login() {
+  const email = document.getElementById("email").value;
+  const pass = document.getElementById("password").value;
 
-// =========================
-// LOGOUT (optional future use)
-// =========================
-function logout() {
-  sessionStorage.removeItem("loggedIn");
-  window.location.href = "index.html";
-}
-
-// =========================
-// BALANCE TOGGLE (DASHBOARD)
-// =========================
-let hidden = false;
-
-function toggleBalance() {
-  const bal = document.getElementById("balance");
-
-  if (!bal) return;
-
-  hidden = !hidden;
-
-  bal.innerText = hidden ? "******" : "$250,000,000.00";
-}
-
-// =========================
-// COPY ACCOUNT NUMBER
-// =========================
-function copyAcc() {
-  const accText = "7963064085";
-
-  navigator.clipboard.writeText(accText);
-
-  alert("Account number copied ✔");
-}
-
-// =========================
-// TRANSFER SIMULATION (optional hook if reused later)
-// =========================
-function simulateTransfer(acc, amount, statusEl, callback) {
-  if (!acc || !amount) {
-    statusEl.innerText = "Fill all fields first";
-    return;
+  if (email === "theethanerivers@gmail.com" && pass === "Incredibleman") {
+    sessionStorage.setItem("loggedIn", "true");
+    window.location.href = "dashboard.html";
+  } else {
+    document.getElementById("err").innerText = "Wrong login";
   }
+}
 
-  statusEl.innerText = "Verifying account...";
+function toggle() {
+  const bal = document.getElementById("bal");
+  bal.innerText = bal.innerText === "******"
+    ? "$250,000,000.00"
+    : "******";
+}
+
+function copyAcc() {
+  navigator.clipboard.writeText("7963064085");
+}
+
+const users = {
+  "1234567890": "John Doe",
+  "7963064085": "Thane Rivers"
+};
+
+function lookup() {
+  const acc = document.getElementById("acc").value;
+  const name = users[acc];
+
+  document.getElementById("name").innerText =
+    name ? "Recipient: " + name : "Not found";
+}
+
+function send() {
+  const acc = document.getElementById("acc").value;
+  const amount = document.getElementById("amount").value;
+
+  if (!users[acc]) return;
 
   setTimeout(() => {
-    statusEl.innerText = "Account verified ✔ Processing...";
-
-    setTimeout(() => {
-      callback();
-    }, 1500);
-
-  }, 1500);
+    document.getElementById("receipt").style.display = "block";
+    document.getElementById("receipt").innerText =
+      "Sent $" + amount + " to " + users[acc];
+  }, 1000);
 }

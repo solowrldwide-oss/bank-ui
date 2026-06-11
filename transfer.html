@@ -1,87 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Transfer</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00c27a">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
-
-<body onload="checkAuth()">
+<div class="bottom-nav">
+  <a href="dashboard.html">🏠</a>
+  <a href="transfer.html">💸</a>
+  <a href="transactions.html">📊</a>
+</div>
+<body onload="check()">
 
 <div class="layout">
 
-  <!-- SIDEBAR -->
   <div class="sidebar">
-    <h2>NeoBank</h2>
-
-    <a href="dashboard.html">🏠 Home</a>
-    <a href="transfer.html">💸 Transfer</a>
-    <a href="transactions.html">📊 History</a>
+    <a href="dashboard.html">Home</a>
+    <a href="transfer.html">Transfer</a>
+    <a href="transactions.html">History</a>
   </div>
 
-  <!-- MAIN -->
   <div class="main">
 
     <div class="card">
-      <h2>Send Money 💸</h2>
-      <p class="muted">Enter recipient details below</p>
+      <h2>Transfer Money</h2>
 
-      <input id="acc" placeholder="Account Number">
+      <input id="acc" placeholder="Account Number" oninput="lookup()">
       <input id="amount" placeholder="Amount">
 
-      <button onclick="sendMoney()">Continue</button>
+      <p id="name"></p>
 
-      <p id="status" class="muted" style="margin-top:10px;"></p>
+      <button onclick="send()">Send</button>
+
+      <p id="status"></p>
     </div>
 
-    <!-- RECEIPT -->
-    <div class="card" id="receipt" style="display:none; margin-top:20px;">
-      <h2 style="color:#22c55e;">Transfer Successful 🎉</h2>
-      <p id="receiptText" class="muted"></p>
-    </div>
+    <div class="card" id="receipt" style="display:none;"></div>
 
   </div>
 
 </div>
 
-<script>
-function checkAuth() {
-  if (sessionStorage.getItem("loggedIn") !== "true") {
-    window.location.href = "index.html";
-  }
-}
-
-function sendMoney() {
-  const acc = document.getElementById("acc").value;
-  const amount = document.getElementById("amount").value;
-
-  const status = document.getElementById("status");
-
-  if (!acc || !amount) {
-    status.innerText = "Fill all fields first";
-    return;
-  }
-
-  status.innerText = "Verifying account...";
-
-  setTimeout(() => {
-    status.innerText = "Account verified ✔ Processing transfer...";
-
-    setTimeout(() => {
-      showReceipt(acc, amount);
-    }, 1500);
-
-  }, 1500);
-}
-
-function showReceipt(acc, amount) {
-  document.getElementById("receipt").style.display = "block";
-
-  document.getElementById("receiptText").innerText =
-    `You sent $${amount} to account ${acc}. TXN ID: TXN${Math.floor(Math.random()*99999999)}`;
-}
-</script>
 <script src="script.js"></script>
 </body>
 </html>

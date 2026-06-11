@@ -1,94 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Dashboard</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00c27a">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
-
-<body onload="checkAuth()">
+<div class="bottom-nav">
+  <a href="dashboard.html">🏠</a>
+  <a href="transfer.html">💸</a>
+  <a href="transactions.html">📊</a>
+</div>
+<body onload="check()">
 
 <div class="layout">
 
-  <!-- SIDEBAR -->
   <div class="sidebar">
-    <h2 style="font-size:20px; margin-bottom:20px;">NeoBank</h2>
-
-    <a href="dashboard.html">🏠 Home</a>
-    <a href="transfer.html">💸 Transfer</a>
-    <a href="transactions.html">📊 History</a>
+    <h3>NeoBank</h3>
+    <a href="dashboard.html">Home</a>
+    <a href="transfer.html">Transfer</a>
+    <a href="transactions.html">History</a>
   </div>
 
-  <!-- MAIN -->
   <div class="main">
 
-    <!-- HERO BALANCE -->
     <div class="card">
+      <h2>Hi there, Thane!</h2>
+      <p class="balance" id="bal">$250,000,000.00</p>
 
-      <p class="muted">Available Balance</p>
+      <button onclick="toggle()">Hide/Show</button>
+      <button onclick="copyAcc()">Copy Account</button>
 
-      <h1 class="balance" id="balance">$250,000,000.00</h1>
-
-      <p class="muted">Account: 7963064085</p>
-
-      <div style="display:flex; gap:10px; margin-top:15px;">
-        <button onclick="toggleBalance()">Hide/Show</button>
-        <button onclick="copyAcc()">Copy Account</button>
-      </div>
-
-    </div>
-
-    <!-- QUICK ACTIONS -->
-    <div class="grid">
-
-      <div class="card" onclick="go('transfer.html')" style="cursor:pointer;">
-        <h3>💸 Send Money</h3>
-        <p class="muted">Transfer funds instantly</p>
-      </div>
-
-      <div class="card" onclick="go('transactions.html')" style="cursor:pointer;">
-        <h3>📊 Activity</h3>
-        <p class="muted">View transactions</p>
-      </div>
-
-      <div class="card">
-        <h3>💳 Cards</h3>
-        <p class="muted">Manage your cards</p>
-      </div>
-
+      <p>7963064085</p>
     </div>
 
   </div>
 
 </div>
 
-<script>
-function checkAuth() {
-  if (sessionStorage.getItem("loggedIn") !== "true") {
-    window.location.href = "index.html";
-  }
-}
-
-let hidden = false;
-
-function toggleBalance() {
-  const bal = document.getElementById("balance");
-
-  hidden = !hidden;
-
-  bal.innerText = hidden ? "******" : "$250,000,000.00";
-}
-
-function copyAcc() {
-  navigator.clipboard.writeText("7963064085");
-  alert("Account copied");
-}
-
-function go(page) {
-  window.location.href = page;
-}
-</script>
 <script src="script.js"></script>
 </body>
 </html>

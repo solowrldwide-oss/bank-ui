@@ -1,0 +1,15 @@
+{
+  "name": "NeoBank",
+  "short_name": "NeoBank",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#05080f",
+  "theme_color": "#00c27a",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

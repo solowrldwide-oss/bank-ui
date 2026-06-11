@@ -1,60 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Transactions</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00c27a">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
-
-<body onload="checkAuth()">
+<div class="bottom-nav">
+  <a href="dashboard.html">🏠</a>
+  <a href="transfer.html">💸</a>
+  <a href="transactions.html">📊</a>
+</div>
+<body onload="check()">
 
 <div class="layout">
 
-  <!-- SIDEBAR -->
   <div class="sidebar">
-    <h2>NeoBank</h2>
-
-    <a href="dashboard.html">🏠 Home</a>
-    <a href="transfer.html">💸 Transfer</a>
-    <a href="transactions.html">📊 History</a>
+    <a href="dashboard.html">Home</a>
+    <a href="transfer.html">Transfer</a>
   </div>
 
-  <!-- MAIN -->
   <div class="main">
 
     <div class="card">
-      <h2>Transaction History 📊</h2>
-      <p class="muted">Your recent activity</p>
-    </div>
+      <h2>Transactions</h2>
 
-    <!-- TRANSACTION LIST -->
-    <div class="card">
-
-      <div style="margin-bottom:15px;">
-        <h3 style="color:#22c55e;">+ $5,000,000</h3>
-        <p class="muted">Salary Deposit • Today</p>
-      </div>
-
-      <div style="margin-bottom:15px;">
-        <h3 style="color:#ef4444;">- $250,000</h3>
-        <p class="muted">Transfer • Yesterday</p>
-      </div>
-
-      <div style="margin-bottom:15px;">
-        <h3 style="color:#22c55e;">+ $1,200,000</h3>
-        <p class="muted">Investment Return • 2 days ago</p>
-      </div>
-
-      <div style="margin-bottom:15px;">
-        <h3 style="color:#ef4444;">- $45,000</h3>
-        <p class="muted">Online Purchase • 3 days ago</p>
-      </div>
-
-      <div>
-        <h3 style="color:#22c55e;">+ $3,500,000</h3>
-        <p class="muted">Bonus Payment • Last week</p>
-      </div>
+      <p>+ $5,000,000 Salary</p>
+      <p>- $250,000 Transfer</p>
+      <p>+ $1,000,000 Bonus</p>
 
     </div>
 
@@ -62,13 +35,6 @@
 
 </div>
 
-<script>
-function checkAuth() {
-  if (sessionStorage.getItem("loggedIn") !== "true") {
-    window.location.href = "index.html";
-  }
-}
-</script>
 <script src="script.js"></script>
 </body>
 </html>
