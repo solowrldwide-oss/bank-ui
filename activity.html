@@ -5,21 +5,13 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body onload="check()">
+<body onload="check(); renderHistory()">
 
 <div class="main">
 
   <div class="card">
-    <h2>Send Money</h2>
-
-    <input id="acc" placeholder="Wallet ID" oninput="lookup()">
-    <input id="amount" placeholder="Amount">
-
-    <p id="name" class="muted"></p>
-
-    <button onclick="send()">Send</button>
-
-    <p id="status" class="muted"></p>
+    <h2>Activity</h2>
+    <div id="history"></div>
   </div>
 
 </div>
